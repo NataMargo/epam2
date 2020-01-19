@@ -2,24 +2,35 @@ package com.company;
 
 import java.util.Scanner;
 
-import static jdk.nashorn.internal.objects.NativeString.substring;
-
 public class Main {
-    static String convertToBinary(int number) {
-        String result = Integer.toBinaryString(number);
+    public static String findLastSymbol(int number) {
+        String line;
+        int QUANTITY_OF_LAST_SYMBOL = 2;
+        line=Integer.toString(number);
+        int position1=(line.length()-1);
+        int position=line.length()-QUANTITY_OF_LAST_SYMBOL;
+        String result =line.substring(position1)+line.substring(position,position1);
+
         return result;
-        }
+
+    }
 
     public static void main(String[] args) {
         var Scanner = new Scanner(System.in);
         System.out.println("Enter integer number");
         int number = Scanner.nextInt();
-        String result = convertToBinary(number);
-        System.out.print(result);
+        String revertLastSymbols =findLastSymbol(number);
+        System.out.println(revertLastSymbols);
     }
 }
 
 
-/*Напишите программу на языке Java, которая вводит целое число,
-преобразует его в двоичное представление, сохраняя как строку, и выводит в
-консоль результат. Преобразование выполняется отдельным методом.*/
+
+/*Напишите программу на Java, которая:
+− вводит переменную целого типа и выводит результат ее обработки;
+− обработка – это метод, который получает целое число, определяет две
+последние цифры и возвращает их в виде строки символов в обратном
+порядке. Например, число 2546, результат – "64".*/
+
+
+
