@@ -1,11 +1,10 @@
 package com.company;
-
-
+import java.util.Arrays;
 public class Main {
 
     public static void main(String[] args) {
 
-        Shape[] Figure = new Shape[]{
+        Shape[] Figures = new Shape[]{
                 new Rectangle("blue", 5.5, 7.8),
                 new Rectangle("red", 7.5, 3.8),
                 new Rectangle("black", 9.5, 5.8),
@@ -17,55 +16,53 @@ public class Main {
                 new Triangle("green", 8.7, 11, 7)
         };
 
-
-        for (int i = 0; i < Figure.length; i++) {
-            System.out.println(Figure[i].toString() + " " + Figure[i].calcArea());
-
-        }
-        System.out.println("----------------------");
-        int i = 0;
-        double result = 0.0;
-        for (Shape elem : Figure) {
-            result += Figure[i].calcArea();
-            i++;
-        }
-        System.out.println("Square of all figures =" + result);
-        System.out.println("----------------------");
+        for (Shape obj : Figures) {
+            System.out.println(obj+ " , area = "+ obj.calcArea());
+                    }
+        System.out.println("-----------------------------");
+        double areaAll = calcAllArea(Figures);
+        System.out.println("Area of all figures =" + areaAll);
+        System.out.println("----------------------------");
+        System.out.println("Area of circles, triangles, rectangles");
+        double [] area =calcAreaShape(Figures);
+        System.out.println(Arrays.toString(area));
+        System.out.println("---------------------------");
+        System.out.println("Area of circles= " + area[0]);
+        System.out.println("Area of triangles= " + area[1]);
+        System.out.println("Area of rectangles= " + area[2]);
+    }
+    private static double [] calcAreaShape (Shape []  Figures) {
         int n = 0;
-        double squareCircle = 0;
-        double squareTriangle = 0;
-        double squareRect = 0;
-        for (Shape elem : Figure) {
+        double [] area ={ 0,0,0 };
+        double areaCircle=0;
+        double areaTriangle = 0;
+        double areaRect = 0;
+        for (Shape elem : Figures) {
 
-            if (Figure[n] instanceof Rectangle) {
-
-                squareRect += Figure[n].calcArea();
-            } else if (Figure[n] instanceof Circle) {
-                squareCircle += Figure[n].calcArea();
-            } else if (Figure[n] instanceof Triangle) {
-                squareTriangle += Figure[n].calcArea();
+            if (Figures[n] instanceof Rectangle) {
+                areaRect += Figures[n].calcArea();
+            } else if (Figures[n] instanceof Circle) {
+                areaCircle += Figures[n].calcArea();
+            } else if (Figures[n] instanceof Triangle) {
+                areaTriangle += Figures[n].calcArea();
             }
             n++;
+        area[0]=areaCircle;
+        area[1]=areaRect;
+        area[2]=areaTriangle;
+    } return area;
+    }
 
-
+    private static double calcAllArea (Shape []  Figures) {
+        int i = 0;
+        double result = 0.0;
+        for (Shape elem : Figures) {
+            result += Figures[i].calcArea();
+            i++;
         }
-        System.out.println("square of circles= " + squareCircle);
-        System.out.println("square of triangles= " + squareTriangle);
-        System.out.println("square of rectangles= " + squareRect);
+        return result;
     }
 }
-
-
-   /* public static double squareFigures() {
-
-
-
-        System.out.println( squareFigures() );
-        return 5.5;
-    }
-}
-
-
 
 
 
@@ -84,3 +81,4 @@ public class Main {
 //1) При кодировании должны быть использованы соглашения об
 //оформлении кода для языка Java.
 //2) Используйте оператор instanceof для определения типа фигуры.*/
+

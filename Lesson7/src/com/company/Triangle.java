@@ -1,17 +1,41 @@
 package com.company;
 
 public class Triangle extends Shape{
-    double half_perim;
-    double sideA;
-    double sideB;
-    double sideC;
+    private double half_perim;
+    private double a;
+    private double b;
+    private double c;
 
     public Triangle(String color,double a, double b, double c) {
-        // init class value
         super(color);
-        sideA = a;
-        sideB = b;
-        sideC = c;
+        this.a = a;
+        this.b = b;
+        this.c = c;
+
+    }
+
+    public double getA() {
+        return a;
+    }
+
+    public void setA(double a) {
+        this.a = a;
+    }
+
+    public double getB() {
+        return b;
+    }
+
+    public void setB(double b) {
+        this.b = b;
+    }
+
+    public double getC() {
+        return c;
+    }
+
+    public void setC(double c) {
+        this.c = c;
     }
 
     public Triangle(String color) {
@@ -20,15 +44,16 @@ public class Triangle extends Shape{
 
     @Override
     public String toString() {
-        return "Triangle "+color;
-      //  return super.toString();
+        return super.toString() +
+        ", a=" + a + ", b=" + b + ", c= " + c;
+
     }
 
     @Override
     public double calcArea() {
-        half_perim = ( sideA + sideB + sideC)/2;
-        double square = Math.sqrt(half_perim * (half_perim - sideA ) * (half_perim -sideB) * (half_perim -sideC));
-        return square;
+        half_perim = (a+b+c)/2;
+        double area = Math.sqrt(half_perim * (half_perim - a ) * (half_perim -b) * (half_perim -c));
+        return area;
     }
 }
 //опишите класс Triangle как подкласс Shape. Класс Triangle содержит:
